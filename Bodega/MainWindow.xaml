@@ -8,7 +8,7 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Button Content="Antonio" HorizontalAlignment="Left" Margin="146,108,0,0" VerticalAlignment="Top"/>
-
+        <Button Content="Otro boton" HorizontalAlignment="Left" Margin="442,108,0,0" VerticalAlignment="Top"/>
         <Button x:Name="btnHola" Content="Hola" HorizontalAlignment="Left" Margin="286,170,0,0" VerticalAlignment="Top" Click="button_Click"/>
 
 
