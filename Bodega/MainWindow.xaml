@@ -7,6 +7,8 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="482" Width="718">
     <Grid>
+        <DatePicker x:Name="dtpFecha" Margin="32,25,535,355"/>
+        <Label x:Name="lblHora" Content="" Margin="205,25,491,355"/>
         <ComboBox x:Name="cmbObjetivo" HorizontalAlignment="Left" Margin="153,236,0,0" VerticalAlignment="Top" Width="120"/>
         <ComboBox x:Name="cmbOperacion" HorizontalAlignment="Left" Margin="153,280,0,0" VerticalAlignment="Top" Width="120"/>
         <Label Content="Objetivo: " HorizontalAlignment="Left" Height="30" Margin="48,233,0,0" VerticalAlignment="Top" Width="114"/>
