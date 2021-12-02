@@ -23,11 +23,12 @@ namespace Bodega
         public MainWindow()
         {
             InitializeComponent();
+
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Soy el rey del mundo");
+            lblHora.Content = DateTime.Now.ToString("HH:mm:ss");    
         }
     }
 }

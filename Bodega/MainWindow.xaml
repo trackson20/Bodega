@@ -5,6 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Bodega"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid/>
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
+    <Grid>
+        <DatePicker x:Name="dtpFecha" Margin="32,25,625,355"/>
+        <Label x:Name="lblHora" Content="" Margin="205,25,491,355"/>
+    </Grid>
 </Window>
