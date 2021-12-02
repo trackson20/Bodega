@@ -11,6 +11,7 @@
         <Button Content="Otro boton" HorizontalAlignment="Left" Margin="442,108,0,0" VerticalAlignment="Top"/>
         <Button x:Name="btnHola" Content="Hola" HorizontalAlignment="Left" Margin="286,170,0,0" VerticalAlignment="Top" Click="button_Click"/>
         <Button Content="silvia" HorizontalAlignment="Left" Margin="355,294,0,0" VerticalAlignment="Top"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="611,190,0,0" VerticalAlignment="Top"/>
 
 
     </Grid>
