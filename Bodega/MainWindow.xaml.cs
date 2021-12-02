@@ -24,5 +24,10 @@ namespace Bodega
         {
             InitializeComponent();
         }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Soy el rey del mundo");
+        }
     }
 }
