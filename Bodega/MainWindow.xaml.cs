@@ -29,5 +29,10 @@ namespace Bodega
         {
             MessageBox.Show("Soy el rey del mundo");
         }
+
+        private void btnLimpiar_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
     }
 }

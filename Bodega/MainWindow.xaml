@@ -5,6 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Bodega"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid/>
+        Title="MainWindow" Height="482" Width="718">
+    <Grid>
+        <ComboBox x:Name="cmbObjetivo" HorizontalAlignment="Left" Margin="153,236,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="cmbOperacion" HorizontalAlignment="Left" Margin="153,280,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Objetivo: " HorizontalAlignment="Left" Height="30" Margin="48,233,0,0" VerticalAlignment="Top" Width="114"/>
+        <Label Content="Operación: " HorizontalAlignment="Left" Height="32" Margin="48,275,0,0" VerticalAlignment="Top" Width="114"/>
+        <ComboBox x:Name="cmbEquipo" HorizontalAlignment="Left" Margin="153,317,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Equipo: " HorizontalAlignment="Left" Height="32" Margin="48,312,0,0" VerticalAlignment="Top" Width="114"/>
+        <Button Content="Enviar" x:Name="btnEnviar" HorizontalAlignment="Left" Height="30" Margin="81,397,0,0" VerticalAlignment="Top" Width="95"/>
+        <Button Content="Limpiar" x:Name="btnLimpiar" HorizontalAlignment="Left" Height="30" Margin="239,397,0,0" VerticalAlignment="Top" Width="95" Click="btnLimpiar_Click"/>
+    </Grid>
 </Window>
