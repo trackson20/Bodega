@@ -27,18 +27,23 @@ namespace Bodega
         public MainWindow()
         {
             InitializeComponent();
-            DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromMilliseconds(1);
-            timer.Tick += timer_tick;
-            timer.Start();
+            cargarGrupos();
+            cargaHoraActual();
         }
 
         public MySqlConnection conexion()
         {
-            string connectionString = "datasource=127.0.0.1;port=3306;username=root;password=;database=bodega;";
+            string connectionString = "datasource=127.0.0.1;port=3306;username=root;password=1234;database=bodega;";
             // Tu consulta en SQL
             MySqlConnection databaseConnection = new MySqlConnection(connectionString);
             return databaseConnection;
+        }
+        public void cargaHoraActual()
+        {
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromMilliseconds(1);
+            timer.Tick += timer_tick;
+            timer.Start();
         }
 
         private void timer_tick(object sender, EventArgs e)
@@ -47,7 +52,8 @@ namespace Bodega
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
-        { 
+        {
+            
         }
         
         private void btnLimpiar_Click(object sender, RoutedEventArgs e)
@@ -61,47 +67,15 @@ namespace Bodega
                 db=conexion();
                 string query = "select id_grupo, nombre from grupo";
                 
+                db.Open();
+                MySqlCommand commandDatabase = new MySqlCommand(query, db);
+                MySqlDataReader reader = commandDatabase.ExecuteReader();
 
-                try
+                while (reader.Read())
                 {
-                    db.Open();
-                    MySqlCommand commandDatabase = new MySqlCommand(query, db);
-                    commandDatabase.CommandTimeout = 60;
-                    MySqlDataReader reader = commandDatabase.ExecuteReader();
-
-                    if (reader.HasRows)
-                    {
-                        while (reader.Read())
-                        {
-                            cmbGrupo.Items.Add(reader.GetString("id_grupo"));
-                            cmbGrupo.SelectedValue = "id_grupo";
-                        }
-                    }
-                }
-                catch (Exception e) { }
-                
-                /*MySqlDataAdapter da = new MySqlDataAdapter(commandDatabase);
-                // Introducimos los datos recuperados en un DataTable
-                DataTable dt = new DataTable();
-                // Creamos la consulta SQL
-                MySqlCommand command = new MySqlCommand();
-                command.Connection = db;
-                string consulta = "select DISTINCT ID_TEMA, NOMBRE from TEMA";
-                command.CommandText = consulta;
-
-                // Ejecutamos la consulta
-                // Introducimos los datos recuperados en un DataTable
-                DataTable dt = new DataTable();
-
-
-
-                da.Fill(dt);
-                cmbTema.DataSource = dt;
-                cmbTema.DisplayMember = "NOMBRE";
-                cmbTema.ValueMember = "ID_TEMA";
-                dbconn.Close();*/
-
-
+                    cmbGrupo.Items.Add(reader.GetString("nombre"));
+                    //cmbGrupo.SelectedValue = "id_grupo";
+                }            
             }
             catch (Exception ex)
             {
@@ -117,7 +91,13 @@ namespace Bodega
 
         private void cmbGrupo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            cargarGrupos();
+            
+        }
+
+        private void btnEnviar_Click(object sender, RoutedEventArgs e)
+        {
+            string item = cmbGrupo.SelectedIndex.ToString();
+            MessageBox.Show(item);
         }
     }
 }
