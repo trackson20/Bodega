@@ -9,7 +9,7 @@
     <Grid>
 
         <TextBlock x:Name="txtFecha" HorizontalAlignment="Left" Margin="150,33,0,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top" Height="21" Width="158"/>
-        <ComboBox x:Name="cmbGrupo" HorizontalAlignment="Left" Margin="150,92,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="cmbGrupo" HorizontalAlignment="Left" Margin="150,92,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cmbGrupo_SelectionChanged"/>
         <ComboBox x:Name="cmbLocalizacion" HorizontalAlignment="Left" Margin="150,136,0,0" VerticalAlignment="Top" Width="120"/>
         <Label Content="Grupo: " HorizontalAlignment="Left" Height="30" Margin="45,89,0,0" VerticalAlignment="Top" Width="114"/>
         <Label Content="Localización: " HorizontalAlignment="Left" Height="32" Margin="45,131,0,0" VerticalAlignment="Top" Width="114"/>

@@ -1,5 +1,7 @@
-﻿using System;
+﻿using MySqlConnector;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +23,7 @@ namespace Bodega
     /// </summary>
     public partial class MainWindow : Window
     {
+        MySqlConnection db;
         public MainWindow()
         {
             InitializeComponent();
@@ -28,6 +31,14 @@ namespace Bodega
             timer.Interval = TimeSpan.FromMilliseconds(1);
             timer.Tick += timer_tick;
             timer.Start();
+        }
+
+        public MySqlConnection conexion()
+        {
+            string connectionString = "datasource=127.0.0.1;port=3306;username=root;password=;database=bodega;";
+            // Tu consulta en SQL
+            MySqlConnection databaseConnection = new MySqlConnection(connectionString);
+            return databaseConnection;
         }
 
         private void timer_tick(object sender, EventArgs e)
@@ -42,6 +53,71 @@ namespace Bodega
         private void btnLimpiar_Click(object sender, RoutedEventArgs e)
         {
             
+        }
+        private void cargarGrupos()
+        {
+            try
+            {
+                db=conexion();
+                string query = "select id_grupo, nombre from grupo";
+                
+
+                try
+                {
+                    db.Open();
+                    MySqlCommand commandDatabase = new MySqlCommand(query, db);
+                    commandDatabase.CommandTimeout = 60;
+                    MySqlDataReader reader = commandDatabase.ExecuteReader();
+
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            cmbGrupo.Items.Add(reader.GetString("id_grupo"));
+                            cmbGrupo.SelectedValue = "id_grupo";
+                        }
+                    }
+                }
+                catch (Exception e) { }
+                
+                /*MySqlDataAdapter da = new MySqlDataAdapter(commandDatabase);
+                // Introducimos los datos recuperados en un DataTable
+                DataTable dt = new DataTable();
+                // Creamos la consulta SQL
+                MySqlCommand command = new MySqlCommand();
+                command.Connection = db;
+                string consulta = "select DISTINCT ID_TEMA, NOMBRE from TEMA";
+                command.CommandText = consulta;
+
+                // Ejecutamos la consulta
+                // Introducimos los datos recuperados en un DataTable
+                DataTable dt = new DataTable();
+
+
+
+                da.Fill(dt);
+                cmbTema.DataSource = dt;
+                cmbTema.DisplayMember = "NOMBRE";
+                cmbTema.ValueMember = "ID_TEMA";
+                dbconn.Close();*/
+
+
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        public void insertRegistro()
+        {
+            string query = "INSERT INTO registro(id_registro, fecha_hora, id_grupo, id_localizacion, id_objetivo, id_operacion, id_equipo) " +
+               "VALUES(" + cmbGrupo.SelectedValue.ToString() + ", ? address)";
+            //" + id + ",'" + txtTitulo.Text + "','" + txtCategoria.Text + "','" + dtpFecha.Value + "','" + txtDescripcion.Text + "','" + txtUrl.Text + "','" + txtCodigo.Text + "') "
+
+        }
+
+        private void cmbGrupo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            cargarGrupos();
         }
     }
 }
