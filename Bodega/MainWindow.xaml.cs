@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace Bodega
 {
@@ -23,14 +24,21 @@ namespace Bodega
         public MainWindow()
         {
             InitializeComponent();
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromMilliseconds(1);
+            timer.Tick += timer_tick;
+            timer.Start();
+        }
 
+        private void timer_tick(object sender, EventArgs e)
+        {
+            txtFecha.Text = DateTime.Now.ToString();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            lblHora.Content = DateTime.Now.ToString("HH:mm:ss");    
+        { 
         }
-
+        
         private void btnLimpiar_Click(object sender, RoutedEventArgs e)
         {
             
