@@ -5,17 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Bodega"
         mc:Ignorable="d"
-        Title="MainWindow" Height="482" Width="718">
+        Title="MainWindow" Height="431" Width="385">
     <Grid>
-        <ComboBox x:Name="cmbObjetivo" HorizontalAlignment="Left" Margin="153,236,0,0" VerticalAlignment="Top" Width="120"/>
-        <ComboBox x:Name="cmbOperacion" HorizontalAlignment="Left" Margin="153,280,0,0" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Objetivo: " HorizontalAlignment="Left" Height="30" Margin="48,233,0,0" VerticalAlignment="Top" Width="114"/>
-        <Label Content="Operación: " HorizontalAlignment="Left" Height="32" Margin="48,275,0,0" VerticalAlignment="Top" Width="114"/>
-        <ComboBox x:Name="cmbEquipo" HorizontalAlignment="Left" Margin="153,317,0,0" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Equipo: " HorizontalAlignment="Left" Height="32" Margin="48,312,0,0" VerticalAlignment="Top" Width="114"/>
-        <Button Content="Enviar" x:Name="btnEnviar" HorizontalAlignment="Left" Height="30" Margin="81,397,0,0" VerticalAlignment="Top" Width="95"/>
-        <Button Content="Limpiar" x:Name="btnLimpiar" HorizontalAlignment="Left" Height="30" Margin="239,397,0,0" VerticalAlignment="Top" Width="95" Click="btnLimpiar_Click"/>
-        <Label x:Name="lblHora" Content="Fecha Actual:" Margin="48,41,567,376"/>
-        <TextBlock x:Name="txtFecha" HorizontalAlignment="Left" Margin="141,46,0,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top" Height="21" Width="157"/>
+
+        <TextBlock x:Name="txtFecha" HorizontalAlignment="Left" Margin="150,33,0,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top" Height="21" Width="158"/>
+        <ComboBox x:Name="cmbGrupo" HorizontalAlignment="Left" Margin="150,92,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="cmbLocalizacion" HorizontalAlignment="Left" Margin="150,136,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Grupo: " HorizontalAlignment="Left" Height="30" Margin="45,89,0,0" VerticalAlignment="Top" Width="114"/>
+        <Label Content="Localización: " HorizontalAlignment="Left" Height="32" Margin="45,131,0,0" VerticalAlignment="Top" Width="114"/>
+        <ComboBox x:Name="cmbObjetivo" HorizontalAlignment="Left" Margin="150,183,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="cmbOperacion" HorizontalAlignment="Left" Margin="150,227,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Objetivo: " HorizontalAlignment="Left" Height="30" Margin="45,180,0,0" VerticalAlignment="Top" Width="114"/>
+        <Label Content="Operación: " HorizontalAlignment="Left" Height="32" Margin="45,222,0,0" VerticalAlignment="Top" Width="114"/>
+        <ComboBox x:Name="cmbEquipo" HorizontalAlignment="Left" Margin="150,264,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Equipo: " HorizontalAlignment="Left" Height="32" Margin="45,259,0,0" VerticalAlignment="Top" Width="114"/>
+        <Button Content="Enviar" x:Name="btnEnviar" HorizontalAlignment="Left" Height="30" Margin="78,344,0,0" VerticalAlignment="Top" Width="95"/>
+        <Button Content="Limpiar" x:Name="btnLimpiar" HorizontalAlignment="Left" Height="30" Margin="236,344,0,0" VerticalAlignment="Top" Width="95" Click="btnLimpiar_Click"/>
+        <Label Content="Fecha actual:" HorizontalAlignment="Left" Height="30" Margin="44,28,0,0" VerticalAlignment="Top" Width="82"/>
+
+
+
     </Grid>
 </Window>
