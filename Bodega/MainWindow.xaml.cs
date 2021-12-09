@@ -34,9 +34,9 @@ namespace Bodega
         public MySqlConnection conexion()
         {
             //Nos funciona a Silvia y a mi
-            string connectionString = "datasource=127.0.0.1;port=3306;username=root;database=bodega;";
+            //string connectionString = "datasource=127.0.0.1;port=3306;username=root;database=bodega;";
             //Le funciona a Antonio
-            //string connectionString = "datasource=127.0.0.1;port=3306;username=root;password=1234;database=bodega;";
+            string connectionString = "datasource=127.0.0.1;port=3306;username=root;password=1234;database=bodega;";
             // Tu consulta en SQL
             MySqlConnection databaseConnection = new MySqlConnection(connectionString);
             return databaseConnection;
@@ -89,7 +89,7 @@ namespace Bodega
             try
             {
                 db = conexion();
-                string query = "select id_grupo, nombre from grupo";
+                string query = "select id_localizacion, nombre from localizacion";
 
                 db.Open();
                 MySqlCommand commandDatabase = new MySqlCommand(query, db);
@@ -97,8 +97,8 @@ namespace Bodega
 
                 while (reader.Read())
                 {
-                    cmbGrupo.Items.Add(reader.GetString("nombre"));
-                    //cmbGrupo.SelectedValue = "id_grupo";
+                    cmbLocalizacion.Items.Add(reader.GetString("nombre"));
+                    cmbLocalizacion.SelectedValue = "id_localizacion";
                 }
             }
             catch (Exception ex)
@@ -120,8 +120,9 @@ namespace Bodega
 
         private void btnEnviar_Click(object sender, RoutedEventArgs e)
         {
-            string item = cmbGrupo.SelectedIndex.ToString();
-            MessageBox.Show(item);
+            
+            MessageBox.Show("valor grupo",cmbGrupo.SelectedIndex.ToString());
+            MessageBox.Show("valor localizacion", cmbLocalizacion.SelectedItem.ToString());
         }
     }
 }
