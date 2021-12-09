@@ -29,6 +29,7 @@ namespace Bodega
             InitializeComponent();
             cargarGrupos();
             cargaHoraActual();
+            cargarLocalizaciones();
         }
 
         public MySqlConnection conexion()
@@ -105,6 +106,9 @@ namespace Bodega
             {
             }
         }
+
+
+
         public void insertRegistro()
         {
             string query = "INSERT INTO registro(id_registro, fecha_hora, id_grupo, id_localizacion, id_objetivo, id_operacion, id_equipo) " +
