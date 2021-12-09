@@ -84,6 +84,7 @@ namespace Bodega
                     //cmbGrupo.SelectedValue = "id_grupo";
                 }
                 cmbGrupo.SelectedIndex = 0;
+                db.Close();
             }
             catch (Exception ex)
             {
@@ -106,6 +107,7 @@ namespace Bodega
                     cmbLocalizacion.SelectedValue = "id_localizacion";
                 }
                 cmbLocalizacion.SelectedIndex = 0;
+                db.Close();
             }
             catch (Exception ex)
             {
@@ -128,6 +130,7 @@ namespace Bodega
                     cmbObjetivo.SelectedValue = "id_objetivo";
                 }
                 cmbObjetivo.SelectedIndex = 0;
+                db.Close();
             }
             catch (Exception ex)
             {
@@ -151,6 +154,7 @@ namespace Bodega
                     cmbOperacion.SelectedValue = "id_operacion";
                 }
                 cmbOperacion.SelectedIndex = 0;
+                db.Close();
             }
             catch (Exception ex)
             {
@@ -174,6 +178,7 @@ namespace Bodega
                     cmbEquipo.SelectedValue = "id_equipo";
                 }
                 cmbEquipo.SelectedIndex = 0;
+                db.Close();
             }
             catch (Exception ex)
             {
@@ -182,11 +187,13 @@ namespace Bodega
 
         public void insertRegistro()
         {
-            string query = "INSERT INTO registro(fecha_hora, id_grupo, id_localizacion, id_objetivo, id_operacion, id_equipo) " +
-               "VALUES( " + txtFecha.Text + " , " + cmbGrupo.SelectedIndex + " , " + cmbLocalizacion.SelectedIndex + " , " + cmbObjetivo.SelectedIndex + " , " + cmbOperacion.SelectedIndex + " , " + cmbEquipo.SelectedIndex +")";
-            //db.Open();
-            MySqlCommand commandDatabase = new MySqlCommand(query, db);
-            MySqlDataReader reader = commandDatabase.ExecuteReader();
+            db = conexion();
+            int idreg=1;
+            string query = "INSERT INTO registro(id_registro,fecha_hora, id_grupo, id_localizacion,id_objetivo,id_operacion,id_equipo) VALUES( "+idreg+1+"," + txtFecha.Text + " , " + cmbGrupo.SelectedIndex + " , " + cmbLocalizacion.SelectedIndex + " , " + cmbObjetivo.SelectedIndex + " , " + cmbOperacion.SelectedIndex + " , " + cmbEquipo.SelectedIndex +")";
+            db.Open();
+            MySqlCommand commandDatabase = new MySqlCommand(query,db);
+            commandDatabase.ExecuteNonQuery();
+            db.Close();
         }
 
         private void cmbGrupo_SelectionChanged(object sender, SelectionChangedEventArgs e)
