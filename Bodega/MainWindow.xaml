@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Bodega"
         mc:Ignorable="d"
-        Title="Formulario de entrada" Height="431" Width="385">
+        Title="Formulario de entrada" Height="431" Width="659">
     <Grid>
 
         <TextBlock x:Name="txtFecha" HorizontalAlignment="Left" Margin="150,33,0,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top" Height="21" Width="158"/>
