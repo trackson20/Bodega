@@ -30,6 +30,9 @@ namespace Bodega
             cargarGrupos();
             cargaHoraActual();
             cargarLocalizaciones();
+            cargarObjetivos();
+            cargarOperacion();
+            cargarEquipo();
         }
 
         public MySqlConnection conexion()
@@ -106,8 +109,71 @@ namespace Bodega
             {
             }
         }
+        private void cargarObjetivos()
+        {
+            try
+            {
+                db = conexion();
+                string query = "select id_objetivo, nombre from objetivo";
 
+                db.Open();
+                MySqlCommand commandDatabase = new MySqlCommand(query, db);
+                MySqlDataReader reader = commandDatabase.ExecuteReader();
 
+                while (reader.Read())
+                {
+                    cmbObjetivo.Items.Add(reader.GetString("nombre"));
+                    cmbObjetivo.SelectedValue = "id_objetivo";
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        public void cargarOperacion()
+        {
+            try
+            {
+                db = conexion();
+                string query = "select id_operacion, nombre from operacion";
+
+                db.Open();
+                MySqlCommand commandDatabase = new MySqlCommand(query, db);
+                MySqlDataReader reader = commandDatabase.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    cmbOperacion.Items.Add(reader.GetString("nombre"));
+                    cmbOperacion.SelectedValue = "id_operacion";
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        public void cargarEquipo()
+        {
+            try
+            {
+                db = conexion();
+                string query = "select id_equipo, nombre from equipo";
+
+                db.Open();
+                MySqlCommand commandDatabase = new MySqlCommand(query, db);
+                MySqlDataReader reader = commandDatabase.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    cmbEquipo.Items.Add(reader.GetString("nombre"));
+                    cmbEquipo.SelectedValue = "id_equipo";
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
 
         public void insertRegistro()
         {
