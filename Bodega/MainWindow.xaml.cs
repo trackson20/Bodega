@@ -38,9 +38,9 @@ namespace Bodega
         public MySqlConnection conexion()
         {
             //Nos funciona a Silvia y a mi
-            string connectionString = "datasource=127.0.0.1;port=3306;username=root;database=bodega;";
+            //string connectionString = "datasource=127.0.0.1;port=3306;username=root;database=bodega;";
             //Le funciona a Antonio
-            //string connectionString = "datasource=127.0.0.1;port=3306;username=root;password=1234;database=bodega;";
+            string connectionString = "datasource=127.0.0.1;port=3306;username=root;password=1234;database=bodega;";
             // Tu consulta en SQL
             MySqlConnection databaseConnection = new MySqlConnection(connectionString);
             return databaseConnection;
@@ -77,12 +77,13 @@ namespace Bodega
                 db.Open();
                 MySqlCommand commandDatabase = new MySqlCommand(query, db);
                 MySqlDataReader reader = commandDatabase.ExecuteReader();
-
+                cmbGrupo.Items.Add("Seleccionar uno...");
                 while (reader.Read())
                 {
                     cmbGrupo.Items.Add(reader.GetString("nombre"));
                     //cmbGrupo.SelectedValue = "id_grupo";
-                }            
+                }
+                cmbGrupo.SelectedIndex = 0;
             }
             catch (Exception ex)
             {
@@ -98,12 +99,13 @@ namespace Bodega
                 db.Open();
                 MySqlCommand commandDatabase = new MySqlCommand(query, db);
                 MySqlDataReader reader = commandDatabase.ExecuteReader();
-
+                cmbLocalizacion.Items.Add("Seleccionar uno...");
                 while (reader.Read())
                 {
                     cmbLocalizacion.Items.Add(reader.GetString("nombre"));
                     cmbLocalizacion.SelectedValue = "id_localizacion";
                 }
+                cmbLocalizacion.SelectedIndex = 0;
             }
             catch (Exception ex)
             {
@@ -119,12 +121,13 @@ namespace Bodega
                 db.Open();
                 MySqlCommand commandDatabase = new MySqlCommand(query, db);
                 MySqlDataReader reader = commandDatabase.ExecuteReader();
-
+                cmbObjetivo.Items.Add("Seleccionar uno...");
                 while (reader.Read())
                 {
                     cmbObjetivo.Items.Add(reader.GetString("nombre"));
                     cmbObjetivo.SelectedValue = "id_objetivo";
                 }
+                cmbObjetivo.SelectedIndex = 0;
             }
             catch (Exception ex)
             {
@@ -141,12 +144,13 @@ namespace Bodega
                 db.Open();
                 MySqlCommand commandDatabase = new MySqlCommand(query, db);
                 MySqlDataReader reader = commandDatabase.ExecuteReader();
-
+                cmbOperacion.Items.Add("Seleccionar uno...");
                 while (reader.Read())
                 {
                     cmbOperacion.Items.Add(reader.GetString("nombre"));
                     cmbOperacion.SelectedValue = "id_operacion";
                 }
+                cmbOperacion.SelectedIndex = 0;
             }
             catch (Exception ex)
             {
@@ -163,12 +167,13 @@ namespace Bodega
                 db.Open();
                 MySqlCommand commandDatabase = new MySqlCommand(query, db);
                 MySqlDataReader reader = commandDatabase.ExecuteReader();
-
+                cmbEquipo.Items.Add("Seleccionar uno...");
                 while (reader.Read())
                 {
                     cmbEquipo.Items.Add(reader.GetString("nombre"));
                     cmbEquipo.SelectedValue = "id_equipo";
                 }
+                cmbEquipo.SelectedIndex = 0;
             }
             catch (Exception ex)
             {
