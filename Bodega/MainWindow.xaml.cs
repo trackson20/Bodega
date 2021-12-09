@@ -34,13 +34,13 @@ namespace Bodega
             cargarOperacion();
             cargarEquipo();
         }
-
+        
         public MySqlConnection conexion()
         {
             //Nos funciona a Silvia y a mi
-            //string connectionString = "datasource=127.0.0.1;port=3306;username=root;database=bodega;";
+            string connectionString = "datasource=127.0.0.1;port=3306;username=root;database=bodega;";
             //Le funciona a Antonio
-            string connectionString = "datasource=127.0.0.1;port=3306;username=root;password=1234;database=bodega;";
+            //string connectionString = "datasource=127.0.0.1;port=3306;username=root;password=1234;database=bodega;";
             // Tu consulta en SQL
             MySqlConnection databaseConnection = new MySqlConnection(connectionString);
             return databaseConnection;
@@ -183,8 +183,7 @@ namespace Bodega
         public void insertRegistro()
         {
             string query = "INSERT INTO registro(id_registro, fecha_hora, id_grupo, id_localizacion, id_objetivo, id_operacion, id_equipo) " +
-               "VALUES(" + cmbGrupo.SelectedValue.ToString() + ", ? address)";
-            //" + id + ",'" + txtTitulo.Text + "','" + txtCategoria.Text + "','" + dtpFecha.Value + "','" + txtDescripcion.Text + "','" + txtUrl.Text + "','" + txtCodigo.Text + "') "
+               "VALUES( " + txtFecha.Text + " , " + cmbGrupo.SelectedValue.ToString() + " , " + cmbLocalizacion.SelectedValue.ToString() + " , " + cmbObjetivo.SelectedValue.ToString() + " , " + cmbOperacion.SelectedValue.ToString() + " , " + cmbEquipo.SelectedValue.ToString() + ")";
 
         }
 
@@ -195,9 +194,17 @@ namespace Bodega
 
         private void btnEnviar_Click(object sender, RoutedEventArgs e)
         {
-            
-            MessageBox.Show("valor grupo",cmbGrupo.SelectedIndex.ToString());
-            MessageBox.Show("valor localizacion", cmbLocalizacion.SelectedItem.ToString());
+
+            if (cmbGrupo.SelectedIndex == 0 || cmbLocalizacion.SelectedIndex == 0 || cmbObjetivo.SelectedIndex == 0 || cmbOperacion.SelectedIndex == 0 || cmbEquipo.SelectedIndex == 0)
+            {
+                MessageBox.Show("Por favor Rellene Todos Los Campos");
+            }
+            else
+            {
+                MessageBox.Show("Registro introdusio");
+
+                insertRegistro();
+            }
         }
     }
 }
