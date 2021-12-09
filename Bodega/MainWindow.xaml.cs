@@ -55,7 +55,7 @@ namespace Bodega
 
         private void timer_tick(object sender, EventArgs e)
         {
-            txtFecha.Text = DateTime.Now.ToString();
+            txtFecha.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -182,9 +182,11 @@ namespace Bodega
 
         public void insertRegistro()
         {
-            string query = "INSERT INTO registro(id_registro, fecha_hora, id_grupo, id_localizacion, id_objetivo, id_operacion, id_equipo) " +
-               "VALUES( " + txtFecha.Text + " , " + cmbGrupo.SelectedValue.ToString() + " , " + cmbLocalizacion.SelectedValue.ToString() + " , " + cmbObjetivo.SelectedValue.ToString() + " , " + cmbOperacion.SelectedValue.ToString() + " , " + cmbEquipo.SelectedValue.ToString() + ")";
-
+            string query = "INSERT INTO registro(fecha_hora, id_grupo, id_localizacion, id_objetivo, id_operacion, id_equipo) " +
+               "VALUES( " + txtFecha.Text + " , " + cmbGrupo.SelectedIndex + " , " + cmbLocalizacion.SelectedIndex + " , " + cmbObjetivo.SelectedIndex + " , " + cmbOperacion.SelectedIndex + " , " + cmbEquipo.SelectedIndex +")";
+            //db.Open();
+            MySqlCommand commandDatabase = new MySqlCommand(query, db);
+            MySqlDataReader reader = commandDatabase.ExecuteReader();
         }
 
         private void cmbGrupo_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -204,6 +206,7 @@ namespace Bodega
                 MessageBox.Show("Registro introdusio");
 
                 insertRegistro();
+                
             }
         }
     }
