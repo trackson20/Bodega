@@ -37,10 +37,12 @@ namespace Bodega
         
         public MySqlConnection conexion()
         {
-            //Nos funciona a Silvia y a mi
+            // Usamos la ruta de conexíon que se nos adapte mejor 
+                //Nos funciona a Silvia y a mi
             string connectionString = "datasource=127.0.0.1;port=3306;username=root;database=bodega;";
-            //Le funciona a Antonio
+                //Le funciona a Antonio
             //string connectionString = "datasource=127.0.0.1;port=3306;username=root;password=1234;database=bodega;";
+
             // Tu consulta en SQL
             MySqlConnection databaseConnection = new MySqlConnection(connectionString);
             return databaseConnection;
@@ -71,19 +73,26 @@ namespace Bodega
         {
             try
             {
+                // Creamos una conexion con la base de datos y realizamos una consulta
                 db=conexion();
                 string query = "select id_grupo, nombre from grupo";
                 
                 db.Open();
                 MySqlCommand commandDatabase = new MySqlCommand(query, db);
+
+                // Leemos el resultado de la consulta 
                 MySqlDataReader reader = commandDatabase.ExecuteReader();
-                cmbGrupo.Items.Add("Seleccionar uno...");
+                cmbGrupo.Items.Add("Seleccionar uno..."); // El campo por defecto
+
+                // Annadimos los datos obtenidos en el comboBox
                 while (reader.Read())
                 {
                     cmbGrupo.Items.Add(reader.GetString("nombre"));
                     //cmbGrupo.SelectedValue = "id_grupo";
                 }
                 cmbGrupo.SelectedIndex = 0;
+
+                // Cerramos la conexion con la base de datos 
                 db.Close();
             }
             catch (Exception ex)
@@ -187,6 +196,7 @@ namespace Bodega
 
         public void insertRegistro()
         {
+            // Annadimos en una tabla nueva Registro, los resultados obtenidos 
             db = conexion();
             int idreg=1;
             string query = "INSERT INTO registro(id_registro,fecha_hora, id_grupo, id_localizacion,id_objetivo,id_operacion,id_equipo) VALUES( "+idreg+1+"," + txtFecha.Text + " , " + cmbGrupo.SelectedIndex + " , " + cmbLocalizacion.SelectedIndex + " , " + cmbObjetivo.SelectedIndex + " , " + cmbOperacion.SelectedIndex + " , " + cmbEquipo.SelectedIndex +")";
@@ -203,6 +213,7 @@ namespace Bodega
 
         private void btnEnviar_Click(object sender, RoutedEventArgs e)
         {
+            // Comprobamos los resultados obtenidos 
 
             if (cmbGrupo.SelectedIndex == 0 || cmbLocalizacion.SelectedIndex == 0 || cmbObjetivo.SelectedIndex == 0 || cmbOperacion.SelectedIndex == 0 || cmbEquipo.SelectedIndex == 0)
             {
