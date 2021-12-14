@@ -247,8 +247,7 @@ namespace Bodega
         {
             // Annadimos en una tabla nueva Registro, los resultados obtenidos 
             db = conexion();
-            int idreg=1;
-            string query = "INSERT INTO registro(id_registro,fecha_hora, id_grupo, id_localizacion,id_objetivo,id_operacion,id_equipo) VALUES( "+idreg+1+"," + txtFecha.Text + " , " + cmbGrupo.SelectedIndex + " , " + cmbLocalizacion.SelectedIndex + " , " + cmbObjetivo.SelectedIndex + " , " + cmbOperacion.SelectedIndex + " , " + cmbEquipo.SelectedIndex +")";
+            string query = "INSERT INTO registro(fecha_hora, id_grupo, id_localizacion,id_objetivo,id_operacion,id_equipo) VALUES( '" + txtFecha.Text + "' , " + cmbGrupo.SelectedIndex + " , " + cmbLocalizacion.SelectedIndex + " , " + cmbObjetivo.SelectedIndex + " , " + cmbOperacion.SelectedIndex + " , " + cmbEquipo.SelectedIndex +")";
             db.Open();
             MySqlCommand commandDatabase = new MySqlCommand(query,db);
             commandDatabase.ExecuteNonQuery();
