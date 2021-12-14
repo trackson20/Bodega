@@ -83,22 +83,30 @@ namespace Bodega
 
             if (reader.Read())
             {
-                byte[] imagenByte = (byte[])reader["imagen"];
-                MemoryStream ms = new MemoryStream(imagenByte);
-                BitmapImage imageSource = new BitmapImage();
-                imageSource.BeginInit();
-                imageSource.StreamSource = ms;
-                imageSource.EndInit();
+                try
+                {
+                    byte[] imagenByte = (byte[])reader["imagen"];
+                    MemoryStream ms = new MemoryStream(imagenByte);
+                    BitmapImage imageSource = new BitmapImage();
+                    imageSource.BeginInit();
+                    imageSource.StreamSource = ms;
+                    imageSource.EndInit();
 
-                // Le asigna al control Image la imagen recuperada
-                if (String.Equals(from, "localizacion"))
-                {
-                    localizacionimg.Source = imageSource;
+                    // Le asigna al control Image la imagen recuperada
+                    if (String.Equals(from, "localizacion"))
+                    {
+                        localizacionimg.Source = imageSource;
+                    }
+                    else
+                    {
+                        equipoimg.Source = imageSource;
+                    }
                 }
-                else
+                catch (System.InvalidCastException e)
                 {
-                    equipoimg.Source = imageSource;
+                    
                 }
+
             }
         }
         private void cargarGrupos()
