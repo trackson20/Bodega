@@ -104,7 +104,14 @@ namespace Bodega
                 }
                 catch (System.InvalidCastException e)
                 {
-                    
+                    if (String.Equals(from, "localizacion"))
+                    {
+                        localizacionimg.Source = null;
+                    }
+                    else
+                    {
+                        equipoimg.Source = null;
+                    }
                 }
 
             }
