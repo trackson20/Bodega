@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -69,6 +70,37 @@ namespace Bodega
         {
             
         }
+        private void getImageBlob(String from, int index)
+        {
+            db = conexion();
+            string query = "select imagen from " + from + " where id_" + from + " = " + index;
+            db.Open();
+            MySqlCommand commandDatabase = new MySqlCommand(query, db);
+
+
+            // Leemos el resultado de la consulta 
+            MySqlDataReader reader = commandDatabase.ExecuteReader();
+
+            if (reader.Read())
+            {
+                byte[] imagenByte = (byte[])reader["imagen"];
+                MemoryStream ms = new MemoryStream(imagenByte);
+                BitmapImage imageSource = new BitmapImage();
+                imageSource.BeginInit();
+                imageSource.StreamSource = ms;
+                imageSource.EndInit();
+
+                // Le asigna al control Image la imagen recuperada
+                if (String.Equals(from, "localizacion"))
+                {
+                    localizacionimg.Source = imageSource;
+                }
+                else
+                {
+                    equipoimg.Source = imageSource;
+                }
+            }
+        }
         private void cargarGrupos()
         {
             try
@@ -115,6 +147,7 @@ namespace Bodega
                     cmbLocalizacion.Items.Add(reader.GetString("nombre"));
                     cmbLocalizacion.SelectedValue = "id_localizacion";
                 }
+        
                 cmbLocalizacion.SelectedIndex = 0;
                 db.Close();
             }
@@ -184,8 +217,9 @@ namespace Bodega
                 while (reader.Read())
                 {
                     cmbEquipo.Items.Add(reader.GetString("nombre"));
-                    cmbEquipo.SelectedValue = "id_equipo";
+                    //cmbEquipo.SelectedValue = "id_equipo";
                 }
+
                 cmbEquipo.SelectedIndex = 0;
                 db.Close();
             }
@@ -226,6 +260,18 @@ namespace Bodega
                 insertRegistro();
                 
             }
+        }
+
+        private void cmbLocalizacion_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int indiceactual = (int)cmbLocalizacion.SelectedIndex;
+            getImageBlob("localizacion", indiceactual);
+        }
+
+        private void cmbEquipo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int indiceactual = (int)cmbEquipo.SelectedIndex;
+            getImageBlob("equipo", indiceactual);
         }
     }
 }
