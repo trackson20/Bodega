@@ -17,6 +17,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 
+
 namespace Bodega
 {
     /// <summary>
@@ -58,7 +59,7 @@ namespace Bodega
 
         private void timer_tick(object sender, EventArgs e)
         {
-            txtFecha.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            txtFecha.Text = DateTime.Now.ToString("dd-MM-yyyy  -   HH:mm:ss");
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -265,11 +266,11 @@ namespace Bodega
 
             if (cmbGrupo.SelectedIndex == 0 || cmbLocalizacion.SelectedIndex == 0 || cmbObjetivo.SelectedIndex == 0 || cmbOperacion.SelectedIndex == 0 || cmbEquipo.SelectedIndex == 0)
             {
-                MessageBox.Show("Por favor Rellene Todos Los Campos");
+                MessageBox.Show("Por favor rellene todos los campos");
             }
             else
             {
-                MessageBox.Show("Registro introdusio");
+                MessageBox.Show("Registro introducido exitosamente");
 
                 insertRegistro();
                 

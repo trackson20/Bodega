@@ -5,26 +5,49 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Bodega"
         mc:Ignorable="d"
-        Title="Formulario de entrada" Height="431" Width="659">
-    <Grid>
+        Title="Formulario de entrada" Height="431" Width="659" Background="#FF6B2831" MinWidth="654" MinHeight="431" WindowStyle="ThreeDBorderWindow" ResizeMode="NoResize" Icon="/logoDptoIndAli.png" MaxWidth="700" MaxHeight="489">
 
-        <TextBlock x:Name="txtFecha" HorizontalAlignment="Left" Margin="150,33,0,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top" Height="21" Width="158"/>
-        <ComboBox x:Name="cmbGrupo" HorizontalAlignment="Left" Margin="150,92,0,0" VerticalAlignment="Top" Width="210" SelectionChanged="cmbGrupo_SelectionChanged" />
-        <ComboBox x:Name="cmbLocalizacion" HorizontalAlignment="Left" Margin="150,136,0,0" VerticalAlignment="Top" Width="210" SelectionChanged="cmbLocalizacion_SelectionChanged"/>
-        <Label Content="Grupo: " HorizontalAlignment="Left" Height="30" Margin="44,88,0,0" VerticalAlignment="Top" Width="114"/>
-        <Label Content="Localización: " HorizontalAlignment="Left" Height="32" Margin="44,131,0,0" VerticalAlignment="Top" Width="114"/>
-        <ComboBox x:Name="cmbObjetivo" HorizontalAlignment="Left" Margin="150,183,0,0" VerticalAlignment="Top" Width="210"/>
-        <ComboBox x:Name="cmbOperacion" HorizontalAlignment="Left" Margin="150,227,0,0" VerticalAlignment="Top" Width="210"/>
-        <Label Content="Objetivo: " HorizontalAlignment="Left" Height="30" Margin="45,180,0,0" VerticalAlignment="Top" Width="114"/>
-        <Label Content="Operación: " HorizontalAlignment="Left" Height="32" Margin="45,222,0,0" VerticalAlignment="Top" Width="114"/>
-        <ComboBox x:Name="cmbEquipo" HorizontalAlignment="Left" Margin="150,264,0,0" VerticalAlignment="Top" Width="210" SelectionChanged="cmbEquipo_SelectionChanged"/>
-        <Label Content="Equipo: " HorizontalAlignment="Left" Height="32" Margin="45,259,0,0" VerticalAlignment="Top" Width="114"/>
-        <Button Content="Enviar" x:Name="btnEnviar" HorizontalAlignment="Left" Height="30" Margin="45,344,0,0" VerticalAlignment="Top" Width="95" Click="btnEnviar_Click"/>
-        <Button Content="Limpiar" x:Name="btnLimpiar" HorizontalAlignment="Left" Height="30" Margin="236,344,0,0" VerticalAlignment="Top" Width="95" Click="btnLimpiar_Click"/>
-        <Label Content="Fecha actual:" HorizontalAlignment="Left" Height="30" Margin="44,28,0,0" VerticalAlignment="Top" Width="82"/>
-        <Image x:Name="localizacionimg" HorizontalAlignment="Left" Height="97" Margin="440,92,0,0" VerticalAlignment="Top" Width="160"/>
-        <Image x:Name="equipoimg" HorizontalAlignment="Left" Height="97" Margin="440,208,0,0" VerticalAlignment="Top" Width="160"/>
 
+    <Grid Margin="5,6,5,5" Background="LightGray">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Content="Fecha actual:" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Height="30" Margin="44,32,0,0" VerticalAlignment="Top" Width="99" FlowDirection="LeftToRight" ScrollViewer.CanContentScroll="True" FontFamily="Segoe UI Semibold" RenderTransformOrigin="0.101,0.601"/>
+        <TextBlock x:Name="txtFecha" Grid.Row="0" HorizontalAlignment="Left" Margin="231,37,0,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top" Height="21" Width="133" FlowDirection="LeftToRight" ScrollViewer.CanContentScroll="True" FontFamily="Segoe UI Semibold" TextAlignment="Center" Background="White"/>
+
+        <Label Grid.Column="0" Content="Grupo: " HorizontalAlignment="Left" Height="30" Margin="44,88,-7,0" VerticalAlignment="Top" Width="137" FlowDirection="LeftToRight" ScrollViewer.CanContentScroll="True" FontFamily="Segoe UI Semibold"/>
+        <ComboBox x:Name="cmbGrupo" Grid.Column="0" HorizontalAlignment="Left" Margin="171,92,-7,0" VerticalAlignment="Top" Width="253" SelectionChanged="cmbGrupo_SelectionChanged" Height="22" FlowDirection="LeftToRight" ScrollViewer.CanContentScroll="True" FontFamily="Segoe UI Semibold" Padding="2,2,2,2" />
+
+        <Label Grid.Column="0" Content="Localización: " HorizontalAlignment="Left" Height="32" Margin="44,131,-7,0" VerticalAlignment="Top" Width="137" FlowDirection="LeftToRight" ScrollViewer.CanContentScroll="True" FontFamily="Segoe UI Semibold"/>
+        <ComboBox x:Name="cmbLocalizacion" Grid.Column="0" HorizontalAlignment="Left" Margin="171,136,-7,0" VerticalAlignment="Top" Width="253" SelectionChanged="cmbLocalizacion_SelectionChanged" Height="22" FlowDirection="LeftToRight" ScrollViewer.CanContentScroll="True" FontFamily="Segoe UI Semibold" Padding="2,2,2,2"/>
+
+        <Label Grid.Column="0" Content="Objetivo: " HorizontalAlignment="Left" Height="30" Margin="45,180,-7,0" VerticalAlignment="Top" Width="137" FlowDirection="LeftToRight" ScrollViewer.CanContentScroll="True" FontFamily="Segoe UI Semibold"/>
+        <ComboBox x:Name="cmbObjetivo" Grid.Column="0" HorizontalAlignment="Left" Margin="171,183,-7,0" VerticalAlignment="Top" Width="253" Height="22" FlowDirection="LeftToRight" ScrollViewer.CanContentScroll="True" FontFamily="Segoe UI Semibold" Padding="2,2,2,2"/>
+
+        <Label Grid.Column="0" Content="Operación: " HorizontalAlignment="Left" Height="32" Margin="45,222,-7,0" VerticalAlignment="Top" Width="137" FlowDirection="LeftToRight" ScrollViewer.CanContentScroll="True" FontFamily="Segoe UI Semibold"/>
+        <ComboBox x:Name="cmbOperacion" Grid.Column="0" HorizontalAlignment="Left" Margin="171,227,-7,0" VerticalAlignment="Top" Width="253" Height="22" FlowDirection="LeftToRight" ScrollViewer.CanContentScroll="True" FontFamily="Segoe UI Semibold" Padding="2,2,2,2"/>
+
+        <Label Grid.Column="0" Content="Equipo: " HorizontalAlignment="Left" Height="32" Margin="45,259,-7,0" VerticalAlignment="Top" Width="137" FlowDirection="LeftToRight" ScrollViewer.CanContentScroll="True" FontFamily="Segoe UI Semibold"/>
+        <ComboBox x:Name="cmbEquipo" Grid.Column="0" HorizontalAlignment="Left" Margin="171,264,-7,0" VerticalAlignment="Top" Width="253" SelectionChanged="cmbEquipo_SelectionChanged" Height="22" FlowDirection="LeftToRight" ScrollViewer.CanContentScroll="True" FontFamily="Segoe UI Semibold" Padding="2,2,2,2"/>
+
+        <Button  Content="Enviar" Grid.Column="0" x:Name="btnEnviar" HorizontalAlignment="Left" Height="30" Margin="44,22,0,0" VerticalAlignment="Top" Width="135" Click="btnEnviar_Click" Grid.Row="1" BorderThickness="2,2,2,2" FontFamily="Segoe UI Semibold" FontWeight="Bold" FontSize="14"/>
+        <Button  Content="Limpiar" Grid.Column="0" x:Name="btnLimpiar" HorizontalAlignment="Left" Height="30" Margin="289,22,0,0" VerticalAlignment="Top" Width="135" Click="btnLimpiar_Click" Grid.Row="1" BorderThickness="2,2,2,2" FontFamily="Segoe UI Semibold" FontWeight="Bold" FontSize="14"/>
+        <Border BorderThickness="2" Margin="10,47,11,178" Grid.Column="1" BorderBrush="#FF6B2831">
+            <Image x:Name="localizacionimg" Stretch="Fill"/>
+        </Border>
+        <Border BorderThickness="2" Margin="10,177,11,48" Grid.Column="1" BorderBrush="#FF6B2831">
+            <Image x:Name="equipoimg" Stretch="Fill"/>
+        </Border>
+
+
+        <Image Grid.Column="1" HorizontalAlignment="Left" Height="67" Margin="84,10,0,0" VerticalAlignment="Top" Width="72" Source="/logoIES.png" Opacity="0.6" Grid.Row="1"/>
+        <Image HorizontalAlignment="Left" Height="62" VerticalAlignment="Top" Width="55" Source="/logoDptoIndAli.png" Opacity="0.4" Grid.Column="1" Margin="63,298,0,0" Grid.RowSpan="2" RenderTransformOrigin="0.095,0.081"/>
 
 
     </Grid>

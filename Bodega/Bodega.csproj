@@ -7,7 +7,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="bodega.png" />
+    <None Remove="logoDptoIndAli.jpg" />
+    <None Remove="logoDptoIndAli.png" />
+    <None Remove="logoIES.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MySqlConnector" Version="2.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="bodega.png" />
+    <Resource Include="logoDptoIndAli.jpg" />
+    <Resource Include="logoDptoIndAli.png" />
+    <Resource Include="logoIES.png" />
   </ItemGroup>
 
 </Project>
